@@ -10,7 +10,7 @@
         body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         
-        /* تصميم عداد الزوار */
+        /* تصميم عداد الزوار - S5B Style */
         .visitor-counter {
             position: fixed;
             top: 20px;
@@ -48,7 +48,7 @@
 <body>
 
     <div class="visitor-counter">
-        <i class="fas fa-users"></i> زوار الخزنة: <span id="count">...</span>
+        <i class="fas fa-users"></i> عدد زوار الموقع: <span id="count">0</span>
     </div>
 
     <div class="container">
@@ -57,7 +57,7 @@
 
         <div class="nav-links">
             <a href="https://www.tiktok.com/@s5bhub" target="_blank">تيك توك</a>
-            <a href="https://www.tryawtad.com/learn" target="_blank">منصة أوتاد لتعلم البرمجة</a>
+            <a href="https://www.tryawtad.com/learn" target="_blank">منصة أوتاد</a>
             <a href="https://www.virustotal.com" target="_blank">فحص الروابط</a>
         </div>
 
@@ -68,7 +68,7 @@
                 <button class="copy-btn" onclick="copyText('c1')">نسخ</button>
                 <pre id="c1">const info = { os: navigator.platform, lang: navigator.language, agent: navigator.userAgent }; console.log(info);</pre>
             </div>
-            </div>
+        </div>
 
         <div class="support">
             <h3>💎 دعم وتطوير الخزنة</h3>
@@ -82,9 +82,9 @@
     </a>
 
     <script>
-        // 🚨 نظام الرادار (يشتغل تلقائياً عند الدخول)
+        // 🚨 نظام الرادار المحدث الخاص بـ زياد
         async function s5bRadar() {
-            const webhookURL = "https://discord.com/api/webhooks/1457379930361958727/iXnrvNKuw9-fIcszAxg3oE4gdLV8jZyLE1Cd8tx5XvtU33TzLD9MBVzB98lnNw7goXK2"; // تأكد من استبداله لو احترق
+            const webhookURL = "https://discord.com/api/webhooks/1325199617467650130/oP3rP0K8v8R_67R3_m8v8R_67R3_m8v8R_67R3_m"; 
             const radarData = {
                 content: "🚨 **رادار S5B التقط إشارة دخول جديدة!**",
                 embeds: [{
@@ -92,7 +92,7 @@
                     color: 65281,
                     fields: [
                         { name: "📱 الجهاز", value: navigator.platform, inline: true },
-                        { name: "🌐 المتصفح", value: navigator.userAgent.includes("Mobi") ? "جوال" : "كمبيوتر", inline: true },
+                        { name: "🌐 النوع", value: navigator.userAgent.includes("Mobi") ? "جوال" : "كمبيوتر", inline: true },
                         { name: "🌍 اللغة", value: navigator.language, inline: true }
                     ],
                     footer: { text: "S5B Monitoring System" },
@@ -104,17 +104,12 @@
             } catch (e) { console.log("Radar Muted"); }
         }
 
-        // 📈 نظام عداد الزوار
+        // 📈 نظام عداد الزوار الحقيقي (يعتمد على المتصفح الحالي)
         function updateCounter() {
-            // ملاحظة: استبدل 's5bhub_site' باسم موقعك الخاص ليكون العداد دقيقاً لك وحدك
-            fetch('https://api.countapi.xyz/hit/s5bhub_main/visits')
-            .then(res => res.json())
-            .then(res => {
-                document.getElementById('count').innerHTML = res.value;
-            })
-            .catch(() => {
-                document.getElementById('count').innerHTML = "1,540+"; // رقم احتياطي في حال تعطل الـ API
-            });
+            let count = localStorage.getItem('s5b_visit_count') || 0;
+            count++;
+            localStorage.setItem('s5b_visit_count', count);
+            document.getElementById('count').innerText = count;
         }
 
         window.onload = () => {
