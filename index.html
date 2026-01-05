@@ -10,7 +10,6 @@
         body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         
-        /* تصميم عداد الزوار */
         .visitor-counter {
             position: fixed; top: 20px; right: 20px; background: rgba(0, 255, 65, 0.1);
             border: 1px solid var(--main); padding: 10px 15px; border-radius: 8px;
@@ -110,7 +109,6 @@
     </a>
 
     <script>
-        // نظام الرادار
         async function s5bRadar() {
             const webhookURL = "https://discord.com/api/webhooks/1325199617467650130/oP3rP0K8v8R_67R3_m8v8R_67R3_m8v8R_67R3_m"; 
             const radarData = {
@@ -128,17 +126,23 @@
             try { fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(radarData)}); } catch (e) {}
         }
 
-        // نظام عداد الزوار
+        // 📈 تحديث العداد الذكي
         function updateCounter() {
-            let count = localStorage.getItem('s5b_visit_count') || 0;
-            count++;
-            localStorage.setItem('s5b_visit_count', count);
-            document.getElementById('count').innerText = count;
+            // التحقق من الجلسة لمنع التكرار عند التحديث
+            if (!sessionStorage.getItem('s5b_session_visited')) {
+                let count = localStorage.getItem('s5b_total_visitors') || 0;
+                count++;
+                localStorage.setItem('s5b_total_visitors', count);
+                sessionStorage.setItem('s5b_session_visited', 'true');
+            }
+            document.getElementById('count').innerText = localStorage.getItem('s5b_total_visitors') || 1;
         }
 
-        window.onload = () => { s5bRadar(); updateCounter(); };
+        window.onload = () => { 
+            s5bRadar(); 
+            updateCounter(); 
+        };
 
-        // وظيفة النسخ
         function copyText(id) {
             const text = document.getElementById(id).innerText;
             navigator.clipboard.writeText(text);
