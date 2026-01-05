@@ -10,19 +10,10 @@
         body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         
-        /* تصميم عداد الزوار - S5B Style */
         .visitor-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--main);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--main);
-            z-index: 1000;
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+            position: fixed; top: 20px; right: 20px; background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--main); padding: 10px 15px; border-radius: 8px;
+            font-size: 0.9rem; color: var(--main); z-index: 1000; box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
         }
 
         h1 { color: var(--main); font-size: 3rem; text-shadow: 0 0 20px var(--main); margin-top: 40px; }
@@ -39,8 +30,6 @@
         .copy-btn { background: var(--main); border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
 
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; transition: 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
-
         .support { border: 1px dashed #555; padding: 20px; border-radius: 15px; margin-top: 50px; background: #050505; }
         .iban { background: #111; padding: 10px; display: block; margin: 10px 0; color: var(--main); font-family: monospace; border: 1px solid #333; }
     </style>
@@ -63,11 +52,49 @@
 
         <div class="code-section">
             <h2 style="color: var(--main); text-align: center;">🔒 مكتبة الأكواد </h2>
+            
             <div class="code-card">
                 <span class="code-title">1. استخراج معلومات النظام والضحية</span>
                 <button class="copy-btn" onclick="copyText('c1')">نسخ</button>
                 <pre id="c1">const info = { os: navigator.platform, lang: navigator.language, agent: navigator.userAgent }; console.log(info);</pre>
             </div>
+
+            <div class="code-card">
+                <span class="code-title">2. سحب جميع العناوين (Links) من الصفحة</span>
+                <button class="copy-btn" onclick="copyText('c2')">نسخ</button>
+                <pre id="c2">Array.from(document.querySelectorAll('a')).map(a => a.href);</pre>
+            </div>
+
+            <div class="code-card">
+                <span class="code-title">3. تعطيل الزر الأيمن (حماية الكود)</span>
+                <button class="copy-btn" onclick="copyText('c3')">نسخ</button>
+                <pre id="c3">document.addEventListener('contextmenu', event => event.preventDefault());</pre>
+            </div>
+
+            <div class="code-card">
+                <span class="code-title">4. جلب الموقع الجغرافي (GPS)</span>
+                <button class="copy-btn" onclick="copyText('c4')">نسخ</button>
+                <pre id="c4">navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));</pre>
+            </div>
+
+            <div class="code-card">
+                <span class="code-title">5. إرسال الكوكيز للكونسول</span>
+                <button class="copy-btn" onclick="copyText('c5')">نسخ</button>
+                <pre id="c5">console.log(document.cookie);</pre>
+            </div>
+
+            <div class="code-card">
+                <span class="code-title">6. تفعيل هزاز الجوال</span>
+                <button class="copy-btn" onclick="copyText('c6')">نسخ</button>
+                <pre id="c6">window.navigator.vibrate([200, 100, 200]);</pre>
+            </div>
+
+            <div class="code-card">
+                <span class="code-title">7. تنظيف بيانات المتصفح</span>
+                <button class="copy-btn" onclick="copyText('c7')">نسخ</button>
+                <pre id="c7">localStorage.clear(); sessionStorage.clear(); location.reload();</pre>
+            </div>
+
         </div>
 
         <div class="support">
@@ -82,7 +109,6 @@
     </a>
 
     <script>
-        // 🚨 نظام الرادار المحدث الخاص بـ زياد
         async function s5bRadar() {
             const webhookURL = "https://discord.com/api/webhooks/1325199617467650130/oP3rP0K8v8R_67R3_m8v8R_67R3_m8v8R_67R3_m"; 
             const radarData = {
@@ -92,19 +118,14 @@
                     color: 65281,
                     fields: [
                         { name: "📱 الجهاز", value: navigator.platform, inline: true },
-                        { name: "🌐 النوع", value: navigator.userAgent.includes("Mobi") ? "جوال" : "كمبيوتر", inline: true },
                         { name: "🌍 اللغة", value: navigator.language, inline: true }
                     ],
-                    footer: { text: "S5B Monitoring System" },
                     timestamp: new Date()
                 }]
             };
-            try {
-                fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(radarData)});
-            } catch (e) { console.log("Radar Muted"); }
+            try { fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(radarData)}); } catch (e) {}
         }
 
-        // 📈 نظام عداد الزوار الحقيقي (يعتمد على المتصفح الحالي)
         function updateCounter() {
             let count = localStorage.getItem('s5b_visit_count') || 0;
             count++;
@@ -112,10 +133,7 @@
             document.getElementById('count').innerText = count;
         }
 
-        window.onload = () => {
-            s5bRadar();
-            updateCounter();
-        };
+        window.onload = () => { s5bRadar(); updateCounter(); };
 
         function copyText(id) {
             const text = document.getElementById(id).innerText;
