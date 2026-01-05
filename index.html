@@ -10,6 +10,7 @@
         body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         
+        /* تصميم عداد الزوار */
         .visitor-counter {
             position: fixed; top: 20px; right: 20px; background: rgba(0, 255, 65, 0.1);
             border: 1px solid var(--main); padding: 10px 15px; border-radius: 8px;
@@ -24,10 +25,10 @@
         .nav-links a:hover { background: var(--main); color: #000; }
 
         .code-section { text-align: right; margin-top: 50px; }
-        .code-card { background: var(--card); border-left: 4px solid var(--main); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+        .code-card { background: var(--card); border-left: 4px solid var(--main); padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #222; }
         .code-title { color: var(--main); font-weight: bold; margin-bottom: 10px; display: block; }
         pre { background: #000; padding: 15px; border-radius: 5px; overflow-x: auto; color: #00ff41; border: 1px solid #222; font-size: 0.85rem; font-family: monospace; }
-        .copy-btn { background: var(--main); border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+        .copy-btn { background: var(--main); border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 10px; color: #000; }
 
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; transition: 0.3s; }
         .support { border: 1px dashed #555; padding: 20px; border-radius: 15px; margin-top: 50px; background: #050505; }
@@ -109,6 +110,7 @@
     </a>
 
     <script>
+        // نظام الرادار
         async function s5bRadar() {
             const webhookURL = "https://discord.com/api/webhooks/1325199617467650130/oP3rP0K8v8R_67R3_m8v8R_67R3_m8v8R_67R3_m"; 
             const radarData = {
@@ -126,6 +128,7 @@
             try { fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(radarData)}); } catch (e) {}
         }
 
+        // نظام عداد الزوار
         function updateCounter() {
             let count = localStorage.getItem('s5b_visit_count') || 0;
             count++;
@@ -135,6 +138,7 @@
 
         window.onload = () => { s5bRadar(); updateCounter(); };
 
+        // وظيفة النسخ
         function copyText(id) {
             const text = document.getElementById(id).innerText;
             navigator.clipboard.writeText(text);
