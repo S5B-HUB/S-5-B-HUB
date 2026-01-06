@@ -9,126 +9,47 @@
         :root { --main: #00ff41; --bg: #000; --card: #111; }
         body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
-        
-        .visitor-counter {
-            position: fixed; top: 20px; right: 20px; background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--main); padding: 10px 15px; border-radius: 8px;
-            font-size: 0.9rem; color: var(--main); z-index: 1000; box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
-        }
-
+        .visitor-counter { position: fixed; top: 20px; right: 20px; background: rgba(0, 255, 65, 0.1); border: 1px solid var(--main); padding: 10px 15px; border-radius: 8px; font-size: 0.9rem; color: var(--main); z-index: 1000; box-shadow: 0 0 10px rgba(0, 255, 65, 0.2); }
         h1 { color: var(--main); font-size: 3rem; text-shadow: 0 0 20px var(--main); margin-top: 40px; }
         .tagline { color: #888; margin-bottom: 30px; }
-        
         .nav-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
         .nav-links a { color: var(--main); text-decoration: none; border: 1px solid var(--main); padding: 10px 20px; border-radius: 5px; transition: 0.3s; }
         .nav-links a:hover { background: var(--main); color: #000; }
-
         .code-section { text-align: right; margin-top: 50px; }
         .code-card { background: var(--card); border-left: 4px solid var(--main); padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #222; }
         .code-title { color: var(--main); font-weight: bold; margin-bottom: 10px; display: block; }
         pre { background: #000; padding: 15px; border-radius: 5px; overflow-x: auto; color: #00ff41; border: 1px solid #222; font-size: 0.85rem; font-family: monospace; }
         .copy-btn { background: var(--main); border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-bottom: 10px; color: #000; }
-
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; transition: 0.3s; }
         .support { border: 1px dashed #555; padding: 20px; border-radius: 15px; margin-top: 50px; background: #050505; }
         .iban { background: #111; padding: 10px; display: block; margin: 10px 0; color: var(--main); font-family: monospace; border: 1px solid #333; }
     </style>
 </head>
 <body>
-
-    <div class="visitor-counter">
-        <i class="fas fa-users"></i> عدد زوار الموقع: <span id="count">0</span>
-    </div>
-
+    <div class="visitor-counter"><i class="fas fa-users"></i> عدد زوار الموقع: <span id="count">0</span></div>
     <div class="container">
         <h1>S5B | HUB</h1>
         <p class="tagline">بثقة <b>الوالد</b>.. نصنع المستحيل</p>
-
         <div class="nav-links">
             <a href="https://www.tiktok.com/@s5bhub" target="_blank">تيك توك</a>
             <a href="https://www.tryawtad.com/learn" target="_blank">منصة أوتاد</a>
             <a href="https://www.virustotal.com" target="_blank">فحص الروابط</a>
         </div>
-
         <div class="code-section">
             <h2 style="color: var(--main); text-align: center;">🔒 مكتبة الأكواد </h2>
-            
-            <div class="code-card">
-                <span class="code-title">1. استخراج معلومات النظام والضحية</span>
-                <button class="copy-btn" onclick="copyText('c1')">نسخ</button>
-                <pre id="c1">const info = { os: navigator.platform, lang: navigator.language, agent: navigator.userAgent }; console.log(info);</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">2. سحب جميع العناوين (Links) من الصفحة</span>
-                <button class="copy-btn" onclick="copyText('c2')">نسخ</button>
-                <pre id="c2">Array.from(document.querySelectorAll('a')).map(a => a.href);</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">3. تعطيل الزر الأيمن (حماية الكود)</span>
-                <button class="copy-btn" onclick="copyText('c3')">نسخ</button>
-                <pre id="c3">document.addEventListener('contextmenu', event => event.preventDefault());</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">4. جلب الموقع الجغرافي (GPS)</span>
-                <button class="copy-btn" onclick="copyText('c4')">نسخ</button>
-                <pre id="c4">navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">5. إرسال الكوكيز للكونسول</span>
-                <button class="copy-btn" onclick="copyText('c5')">نسخ</button>
-                <pre id="c5">console.log(document.cookie);</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">6. تفعيل هزاز الجوال</span>
-                <button class="copy-btn" onclick="copyText('c6')">نسخ</button>
-                <pre id="c6">window.navigator.vibrate([200, 100, 200]);</pre>
-            </div>
-
-            <div class="code-card">
-                <span class="code-title">7. تنظيف بيانات المتصفح</span>
-                <button class="copy-btn" onclick="copyText('c7')">نسخ</button>
-                <pre id="c7">localStorage.clear(); sessionStorage.clear(); location.reload();</pre>
-            </div>
-
+            <div class="code-card"><span class="code-title">1. استخراج معلومات النظام والضحية</span><button class="copy-btn" onclick="copyText('c1')">نسخ</button><pre id="c1">const info = { os: navigator.platform, lang: navigator.language, agent: navigator.userAgent }; console.log(info);</pre></div>
+            <div class="code-card"><span class="code-title">2. سحب جميع العناوين (Links) من الصفحة</span><button class="copy-btn" onclick="copyText('c2')">نسخ</button><pre id="c2">Array.from(document.querySelectorAll('a')).map(a => a.href);</pre></div>
+            <div class="code-card"><span class="code-title">3. تعطيل الزر الأيمن (حماية الكود)</span><button class="copy-btn" onclick="copyText('c3')">نسخ</button><pre id="c3">document.addEventListener('contextmenu', event => event.preventDefault());</pre></div>
+            <div class="code-card"><span class="code-title">4. جلب الموقع الجغرافي (GPS)</span><button class="copy-btn" onclick="copyText('c4')">نسخ</button><pre id="c4">navigator.geolocation.getCurrentPosition(pos => console.log(pos.coords));</pre></div>
+            <div class="code-card"><span class="code-title">5. إرسال الكوكيز للكونسول</span><button class="copy-btn" onclick="copyText('c5')">نسخ</button><pre id="c5">console.log(document.cookie);</pre></div>
+            <div class="code-card"><span class="code-title">6. تفعيل هزاز الجوال</span><button class="copy-btn" onclick="copyText('c6')">نسخ</button><pre id="c6">window.navigator.vibrate([200, 100, 200]);</pre></div>
+            <div class="code-card"><span class="code-title">7. تنظيف بيانات المتصفح</span><button class="copy-btn" onclick="copyText('c7')">نسخ</button><pre id="c7">localStorage.clear(); sessionStorage.clear(); location.reload();</pre></div>
         </div>
-
-        <div class="support">
-            <h3>💎 دعم وتطوير الخزنة</h3>
-            <span class="iban" id="iban">SA5880207131590222121011</span>
-            <button class="copy-btn" style="width:100%" onclick="copyText('iban')">نسخ الآيبان للدعم</button>
-        </div>
+        <div class="support"><h3>💎 دعم وتطوير الخزنة</h3><span class="iban" id="iban">SA5880207131590222121011</span><button class="copy-btn" style="width:100%" onclick="copyText('iban')">نسخ الآيبان للدعم</button></div>
     </div>
-
-    <a href="https://wa.me/966543866442" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
+    <a href="https://wa.me/966543866442" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <script>
-        async function s5bRadar() {
-            const webhookURL = "https://discord.com/api/webhooks/1325199617467650130/oP3rP0K8v8R_67R3_m8v8R_67R3_m8v8R_67R3_m"; 
-            const radarData = {
-                content: "🚨 **رادار S5B التقط إشارة دخول جديدة!**",
-                embeds: [{
-                    title: "تحليل نظام الزائر",
-                    color: 65281,
-                    fields: [
-                        { name: "📱 الجهاز", value: navigator.platform, inline: true },
-                        { name: "🌍 اللغة", value: navigator.language, inline: true }
-                    ],
-                    timestamp: new Date()
-                }]
-            };
-            try { fetch(webhookURL, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(radarData)}); } catch (e) {}
-        }
-
-        // 📈 تحديث العداد الذكي
         function updateCounter() {
-            // التحقق من الجلسة لمنع التكرار عند التحديث
             if (!sessionStorage.getItem('s5b_session_visited')) {
                 let count = localStorage.getItem('s5b_total_visitors') || 0;
                 count++;
@@ -137,17 +58,8 @@
             }
             document.getElementById('count').innerText = localStorage.getItem('s5b_total_visitors') || 1;
         }
-
-        window.onload = () => { 
-            s5bRadar(); 
-            updateCounter(); 
-        };
-
-        function copyText(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("تم النسخ بنجاح يا وحش! 🚀");
-        }
+        window.onload = updateCounter;
+        function copyText(id) { const text = document.getElementById(id).innerText; navigator.clipboard.writeText(text); alert("تم النسخ بنجاح يا وحش! 🚀"); }
     </script>
 </body>
 </html>
